@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Jose Duran — Portfolio</title>
+		<meta name="description" content="Personal website of Jose Duran. About, projects, skills, and contact.">
+		<meta name="color-scheme" content="light dark">
+		<meta property="og:title" content="Jose Duran — Portfolio">
+		<meta property="og:description" content="About me, projects, skills, and how to reach me.">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="/">
+		<link rel="icon" href="favicon.ico">
+		<link rel="preload" href="styles.css" as="style">
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<a class="skip-link" href="#content">Skip to content</a>
+		<header class="site-header">
+			<div class="container header-inner">
+				<a class="brand" href="#">
+					<span class="brand-avatar" aria-hidden="true">JD</span>
+					<span class="brand-name">Jose Duran</span>
+				</a>
+				<nav class="nav">
+					<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+					<ul id="site-nav" class="nav-list">
+						<li><a href="#about">About</a></li>
+						<li><a href="#skills">Skills</a></li>
+						<li><a href="#projects">Projects</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</nav>
+				<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+			</div>
+		</header>
+
+		<main id="content">
+			<section class="hero">
+				<div class="container hero-inner">
+					<div class="hero-text">
+						<h1>Hello, I'm Jose.</h1>
+						<p class="lead">I build useful, clean, and performant web experiences.</p>
+						<div class="hero-cta">
+							<a class="button primary" href="#projects">View Projects</a>
+							<a class="button" href="#contact">Contact Me</a>
+						</div>
+					</div>
+					<div class="hero-media" aria-hidden="true">
+						<div class="profile-circle">
+							<!-- Replace with your own image at assets/profile.jpg -->
+							<img src="assets/profile.jpg" alt="Portrait of Jose Duran" onerror="this.style.display='none'">
+							<div class="placeholder-initials">JD</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="about" class="section">
+				<div class="container">
+					<h2>About</h2>
+					<p>
+						I'm a developer focused on delivering polished UI and reliable systems.
+						I enjoy working across the stack, with attention to detail and a bias for simplicity.
+					</p>
+					<ul class="highlights">
+						<li>Responsive, accessible frontends</li>
+						<li>Clean, maintainable code</li>
+						<li>Fast iteration and pragmatic solutions</li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="skills" class="section alt">
+				<div class="container">
+					<h2>Skills</h2>
+					<div class="chips">
+						<span class="chip">HTML</span>
+						<span class="chip">CSS</span>
+						<span class="chip">JavaScript</span>
+						<span class="chip">TypeScript</span>
+						<span class="chip">React</span>
+						<span class="chip">Node.js</span>
+						<span class="chip">Design Systems</span>
+						<span class="chip">Accessibility</span>
+						<span class="chip">Performance</span>
+					</div>
+				</div>
+			</section>
+
+			<section id="projects" class="section">
+				<div class="container">
+					<h2>Projects</h2>
+					<div class="grid projects">
+						<article class="card">
+							<h3>Project One</h3>
+							<p>A short description of what it does and why it matters.</p>
+							<div class="card-actions">
+								<a class="button small" href="#" target="_blank" rel="noopener">Live</a>
+								<a class="button small" href="#" target="_blank" rel="noopener">Code</a>
+							</div>
+						</article>
+						<article class="card">
+							<h3>Project Two</h3>
+							<p>A short description of what it does and why it matters.</p>
+							<div class="card-actions">
+								<a class="button small" href="#" target="_blank" rel="noopener">Live</a>
+								<a class="button small" href="#" target="_blank" rel="noopener">Code</a>
+							</div>
+						</article>
+						<article class="card">
+							<h3>Project Three</h3>
+							<p>A short description of what it does and why it matters.</p>
+							<div class="card-actions">
+								<a class="button small" href="#" target="_blank" rel="noopener">Live</a>
+								<a class="button small" href="#" target="_blank" rel="noopener">Code</a>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section id="contact" class="section alt">
+				<div class="container">
+					<h2>Contact</h2>
+					<p>Want to collaborate or say hello? Reach out:</p>
+					<ul class="contact-list">
+						<li><a href="mailto:jose@example.com">jose@example.com</a></li>
+						<li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+						<li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+					</ul>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="container footer-inner">
+				<p>© <span id="year"></span> Jose Duran. All rights reserved.</p>
+				<a href="#content" class="back-to-top">Back to top ↑</a>
+			</div>
+		</footer>
+
+		<script src="script.js" defer></script>
+	</body>
+</html>
+
+
