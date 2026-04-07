@@ -69,26 +69,33 @@
 
     <main id="content">
       <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="container hero-inner">
           <div class="hero-text fade-in">
-            <span class="hero-eyebrow">Software Engineer</span>
-            <h1>Hi, I'm Jose Duran.</h1>
+            <span class="hero-eyebrow"><span class="eyebrow-text">Software Engineer</span></span>
+            <h1>Hi, I'm<br>Jose Duran.</h1>
             <p class="lead">
               I build fast, clean, and scalable web experiences — from polished frontends to production-ready backends.
             </p>
             <div class="hero-cta">
               <a class="button primary" href="#projects">View Projects</a>
               <a class="button" href="#contact">Get in Touch</a>
-              <a class="button" href="./assets/Jose_Duran_Resume.pdf" target="_blank" rel="noopener" download>Resume ↓</a>
+              <a class="button" href="./assets/Jose_Duran_Resume.pdf" target="_blank" rel="noopener" download>
+                Resume
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </a>
             </div>
           </div>
           <div class="hero-media fade-in fade-delay" aria-hidden="true">
-            <div class="profile-circle">
-              <img
-                src="./assets/jose.jpeg"
-                alt="Portrait of Jose Duran"
-                onerror="this.style.display='none'"
-              />
+            <div class="profile-wrap">
+              <div class="profile-ring"></div>
+              <div class="profile-circle">
+                <img
+                  src="./assets/jose.jpeg"
+                  alt="Portrait of Jose Duran"
+                  onerror="this.style.display='none'"
+                />
+              </div>
             </div>
             <div class="status-badge">
               <span class="status-dot"></span>
@@ -107,17 +114,23 @@
           </p>
           <div class="about-grid">
             <div class="about-card">
-              <div class="about-icon">⚡</div>
+              <div class="about-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
               <h3>Performance First</h3>
               <p>I write code that's fast by default — optimized bundles, minimal re-renders, efficient queries.</p>
             </div>
             <div class="about-card">
-              <div class="about-icon">🎯</div>
+              <div class="about-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
               <h3>Pragmatic Solutions</h3>
               <p>I focus on what ships — clean, maintainable code that solves real problems without over-engineering.</p>
             </div>
             <div class="about-card">
-              <div class="about-icon">☁️</div>
+              <div class="about-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
               <h3>Cloud Fluent</h3>
               <p>Experienced deploying and scaling on AWS, GCP, and Azure — from containers to serverless.</p>
             </div>
@@ -153,7 +166,7 @@
               </div>
             </div>
             <div class="skill-group">
-              <h4>Cloud & Tools</h4>
+              <h4>Cloud &amp; Tools</h4>
               <div class="chips">
                 <span class="chip">AWS</span>
                 <span class="chip">Google Cloud</span>
@@ -171,18 +184,39 @@
         <div class="container">
           <span class="section-label">Projects</span>
           <h2>Things I've built</h2>
-          <div class="grid projects">
-            <article class="card">
+
+          <!-- Featured project -->
+          <article class="card featured-card">
+            <div class="featured-body">
               <div class="card-top">
-                <span class="card-tag">Full Stack</span>
+                <span class="card-tag">Featured · Full Stack</span>
                 <h3>Rivia</h3>
                 <p>
                   A location-based discovery platform for Dominican Republic businesses and experiences. Built with React 19, Supabase, and Leaflet maps. Includes a consumer app, admin dashboard, and landing page.
                 </p>
               </div>
               <div class="card-actions">
-                <a class="button small primary" href="https://riviard.com/" target="_blank" rel="noopener">Live</a>
+                <a class="button small primary" href="https://riviard.com/" target="_blank" rel="noopener">Live Site</a>
                 <a class="button small" href="https://github.com/joseidd" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+            <div class="featured-badge" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+          </article>
+
+          <div class="grid projects">
+            <article class="card">
+              <div class="card-top">
+                <span class="card-tag">Full Stack</span>
+                <h3>AI Chat App</h3>
+                <p>
+                  A fast AI chat application built with Bun, Groq, and vanilla JavaScript. Supports multi-turn conversations, theme switching, and server-side API key protection.
+                </p>
+              </div>
+              <div class="card-actions">
+                <a class="button small primary" href="https://my-first-ai-app-production.up.railway.app" target="_blank" rel="noopener">Live</a>
+                <a class="button small" href="https://github.com/joseidd/my-first-ai-app" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
             <article class="card">
@@ -194,13 +228,8 @@
                 </p>
               </div>
               <div class="card-actions">
-                <a
-                  class="button small primary"
-                  href="https://joseidd-news-explorer.netlify.app/"
-                  target="_blank"
-                  rel="noopener"
-                  >Live</a
-                >
+                <a class="button small primary" href="https://joseidd-news-explorer.netlify.app/" target="_blank" rel="noopener">Live</a>
+                <a class="button small" href="https://github.com/joseidd/News-Explorer_Project" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
             <article class="card">
@@ -212,13 +241,8 @@
                 </p>
               </div>
               <div class="card-actions">
-                <a
-                  class="button small primary"
-                  href="https://wtwrduran.netlify.app/"
-                  target="_blank"
-                  rel="noopener"
-                  >Live</a
-                >
+                <a class="button small primary" href="https://wtwrduran.netlify.app/" target="_blank" rel="noopener">Live</a>
+                <a class="button small" href="https://github.com/joseidd/se_project_express" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
             <article class="card">
@@ -230,20 +254,8 @@
                 </p>
               </div>
               <div class="card-actions">
-                <a
-                  class="button small primary"
-                  href="https://joseidd.github.io/se_project_spots/"
-                  target="_blank"
-                  rel="noopener"
-                  >Live</a
-                >
-                <a
-                  class="button small"
-                  href="https://github.com/joseidd/se_project_spots"
-                  target="_blank"
-                  rel="noopener"
-                  >GitHub</a
-                >
+                <a class="button small primary" href="https://joseidd.github.io/se_project_spots/" target="_blank" rel="noopener">Live</a>
+                <a class="button small" href="https://github.com/joseidd/se_project_spots" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
             <article class="card">
@@ -255,20 +267,8 @@
                 </p>
               </div>
               <div class="card-actions">
-                <a
-                  class="button small primary"
-                  href="https://joseidd.github.io/se_project_todo-app/"
-                  target="_blank"
-                  rel="noopener"
-                  >Live</a
-                >
-                <a
-                  class="button small"
-                  href="https://github.com/joseidd/se_project_todo-app"
-                  target="_blank"
-                  rel="noopener"
-                  >GitHub</a
-                >
+                <a class="button small primary" href="https://joseidd.github.io/se_project_todo-app/" target="_blank" rel="noopener">Live</a>
+                <a class="button small" href="https://github.com/joseidd/se_project_todo-app" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
             <article class="card">
@@ -280,20 +280,8 @@
                 </p>
               </div>
               <div class="card-actions">
-                <a
-                  class="button small primary"
-                  href="https://joseidd.github.io/se_project_coffeeshop/"
-                  target="_blank"
-                  rel="noopener"
-                  >Live</a
-                >
-                <a
-                  class="button small"
-                  href="https://github.com/joseidd/se_project_coffeeshop"
-                  target="_blank"
-                  rel="noopener"
-                  >GitHub</a
-                >
+                <a class="button small primary" href="https://joseidd.github.io/se_project_coffeeshop/" target="_blank" rel="noopener">Live</a>
+                <a class="button small" href="https://github.com/joseidd/se_project_coffeeshop" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
           </div>
@@ -309,35 +297,40 @@
           </p>
           <div class="contact-links">
             <a class="contact-link" href="mailto:joseidd@hotmail.com">
-              <span class="contact-link-icon">✉</span>
+              <span class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
               <div>
                 <span class="contact-link-label">Email</span>
                 <span class="contact-link-value">joseidd@hotmail.com</span>
               </div>
+              <span class="contact-link-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
             </a>
-            <a
-              class="contact-link"
-              href="https://www.linkedin.com/in/joseiduran/"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="contact-link-icon">in</span>
+            <a class="contact-link" href="https://www.linkedin.com/in/joseiduran/" target="_blank" rel="noopener">
+              <span class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </span>
               <div>
                 <span class="contact-link-label">LinkedIn</span>
                 <span class="contact-link-value">/in/joseiduran</span>
               </div>
+              <span class="contact-link-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
             </a>
-            <a
-              class="contact-link"
-              href="https://github.com/joseidd"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="contact-link-icon">⌥</span>
+            <a class="contact-link" href="https://github.com/joseidd" target="_blank" rel="noopener">
+              <span class="contact-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </span>
               <div>
                 <span class="contact-link-label">GitHub</span>
                 <span class="contact-link-value">/joseidd</span>
               </div>
+              <span class="contact-link-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
             </a>
           </div>
         </div>

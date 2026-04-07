@@ -79,6 +79,53 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(el);
   });
 
+  // Cycling eyebrow titles with typewriter effect
+  const eyebrowTitles = [
+    "Software Engineer",
+    "AI Builder",
+    "Full Stack Developer",
+    "Solutions Architect",
+    "Cloud Engineer",
+  ];
+  const eyebrowEl = document.querySelector(".eyebrow-text");
+  if (eyebrowEl) {
+    let current = 0;
+
+    function typeText(text, onDone) {
+      eyebrowEl.textContent = "";
+      let i = 0;
+      var t = setInterval(function () {
+        eyebrowEl.textContent += text[i];
+        i++;
+        if (i >= text.length) {
+          clearInterval(t);
+          if (onDone) setTimeout(onDone, 2200);
+        }
+      }, 60);
+    }
+
+    function eraseText(onDone) {
+      var t = setInterval(function () {
+        var txt = eyebrowEl.textContent;
+        if (txt.length === 0) {
+          clearInterval(t);
+          if (onDone) onDone();
+        } else {
+          eyebrowEl.textContent = txt.slice(0, -1);
+        }
+      }, 35);
+    }
+
+    function cycle() {
+      eraseText(function () {
+        current = (current + 1) % eyebrowTitles.length;
+        typeText(eyebrowTitles[current], cycle);
+      });
+    }
+
+    typeText(eyebrowTitles[current], cycle);
+  }
+
   // Active nav link on scroll
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-list a");
