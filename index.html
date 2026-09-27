@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/public/icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./public/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jose Duran — Software Engineer</title>
     <meta
@@ -17,11 +17,10 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="/" />
-    <link rel="icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="preload" href="styles.css" as="style" />
@@ -37,6 +36,10 @@
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#">
@@ -59,40 +62,72 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-        <button
-          id="theme-toggle"
-          class="theme-toggle"
-          aria-label="Toggle theme"
-        ></button>
+        <div class="header-actions">
+          <button class="kbd-button" id="palette-open" aria-label="Open command palette">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <kbd class="kbd-hint">⌘K</kbd>
+          </button>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
       </div>
     </header>
 
     <main id="content">
       <section class="hero">
+        <canvas class="hero-canvas" aria-hidden="true"></canvas>
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="container hero-inner">
-          <div class="hero-text fade-in">
-            <span class="hero-eyebrow"><span class="eyebrow-text">Software Engineer</span></span>
-            <h1>Hi, I'm<br>Jose Duran.</h1>
+          <div class="hero-text reveal">
+            <span class="hero-eyebrow">
+              <span class="eyebrow-prompt" aria-hidden="true">&gt;_</span>
+              <span class="eyebrow-text">Software Engineer</span>
+            </span>
+            <h1 class="hero-title">
+              <span class="hero-hi">Hi, I'm</span>
+              <span class="hero-name" aria-label="Jose Duran.">Jose Duran.</span>
+            </h1>
             <p class="lead">
               I build fast, clean, and scalable web experiences from polished frontends to production-ready backends.
             </p>
             <div class="hero-cta">
-              <a class="button primary" href="#projects">View Projects</a>
-              <a class="button" href="#contact">Get in Touch</a>
-              <a class="button" href="./assets/Jose_Duran_Resume.pdf" target="_blank" rel="noopener" download>
+              <a class="button primary magnetic" href="#projects">
+                View Projects
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a class="button magnetic" href="#contact">Get in Touch</a>
+              <a class="button ghost magnetic" href="./assets/Jose_Duran_Resume.pdf" target="_blank" rel="noopener" download>
                 Resume
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               </a>
             </div>
+            <p class="hero-hint" aria-hidden="true">
+              <span>Move your cursor around</span> · press <kbd>⌘K</kbd> to jump anywhere
+            </p>
           </div>
-          <div class="hero-media fade-in fade-delay" aria-hidden="true">
+
+          <div class="hero-media reveal reveal-delay" aria-hidden="true">
             <div class="profile-wrap">
               <div class="profile-ring"></div>
+              <div class="orbit">
+                <span class="orbit-chip" style="--i: 0">React</span>
+                <span class="orbit-chip" style="--i: 1">TypeScript</span>
+                <span class="orbit-chip" style="--i: 2">Node.js</span>
+                <span class="orbit-chip" style="--i: 3">AWS</span>
+                <span class="orbit-chip" style="--i: 4">Supabase</span>
+              </div>
               <div class="profile-circle">
                 <img
-                  src="./assets/jose.jpeg"
+                  src="./assets/jose-720.jpg"
                   alt="Portrait of Jose Duran"
+                  width="360"
+                  height="480"
                   onerror="this.style.display='none'"
                 />
               </div>
@@ -103,48 +138,71 @@
             </div>
           </div>
         </div>
+        <a class="scroll-cue" href="#about" aria-label="Scroll to About">
+          <span></span>
+        </a>
       </section>
 
-      <section id="about" class="section fade-in">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>React</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Node.js</span><i>✦</i><span>Python</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>AWS</span><i>✦</i><span>Google Cloud</span><i>✦</i><span>Azure</span><i>✦</i><span>Tailwind CSS</span><i>✦</i><span>AI Integration</span><i>✦</i><span>REST APIs</span><i>✦</i>
+          <span>React</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Node.js</span><i>✦</i><span>Python</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>AWS</span><i>✦</i><span>Google Cloud</span><i>✦</i><span>Azure</span><i>✦</i><span>Tailwind CSS</span><i>✦</i><span>AI Integration</span><i>✦</i><span>REST APIs</span><i>✦</i>
+        </div>
+      </div>
+
+      <section id="about" class="section">
         <div class="container">
-          <span class="section-label">About</span>
-          <h2>Building things that matter</h2>
-          <p class="section-intro">
-            I'm a software engineer with a passion for creating intuitive, performant web applications. I enjoy working across the full stack  from designing clean UIs to architecting backend systems and cloud infrastructure.
-          </p>
-          <div class="about-grid">
-            <div class="about-card">
+          <div class="section-head reveal">
+            <span class="section-label"><b>01</b> About</span>
+            <h2>Building things <span class="grad-text">that matter</span></h2>
+            <p class="section-intro">
+              I'm a software engineer with a passion for creating intuitive, performant web applications. I enjoy working across the full stack, from designing clean UIs to architecting backend systems and cloud infrastructure.
+            </p>
+          </div>
+          <div class="bento">
+            <div class="bento-card spot reveal">
               <div class="about-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               </div>
               <h3>Performance First</h3>
               <p>I write code that's fast by default — optimized bundles, minimal re-renders, efficient queries.</p>
             </div>
-            <div class="about-card">
+            <div class="bento-card spot reveal">
               <div class="about-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
               </div>
               <h3>Pragmatic Solutions</h3>
               <p>I focus on what ships — clean, maintainable code that solves real problems without over-engineering.</p>
             </div>
-            <div class="about-card">
+            <div class="bento-card spot reveal">
               <div class="about-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               </div>
               <h3>Cloud Fluent</h3>
               <p>Experienced deploying and scaling on AWS, GCP, and Azure — from containers to serverless.</p>
             </div>
+            <div class="bento-card bento-now spot reveal">
+              <span class="now-label"><span class="status-dot"></span> Currently building</span>
+              <h3>Rivia</h3>
+              <p>A location-based discovery platform for Dominican Republic businesses and experiences.</p>
+              <a class="text-link" href="https://riviard.com/" target="_blank" rel="noopener">riviard.com ↗</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="skills" class="section alt fade-in">
+      <section id="skills" class="section alt">
         <div class="container">
-          <span class="section-label">Skills</span>
-          <h2>Technologies I work with</h2>
+          <div class="section-head reveal">
+            <span class="section-label"><b>02</b> Skills</span>
+            <h2>Technologies <span class="grad-text">I work with</span></h2>
+          </div>
           <div class="skills-grid">
-            <div class="skill-group">
-              <h4>Frontend</h4>
+            <div class="skill-group spot reveal">
+              <div class="skill-head">
+                <h4>Frontend</h4>
+                <span class="skill-count">06</span>
+              </div>
               <div class="chips">
                 <span class="chip">React</span>
                 <span class="chip">TypeScript</span>
@@ -154,8 +212,11 @@
                 <span class="chip">Tailwind CSS</span>
               </div>
             </div>
-            <div class="skill-group">
-              <h4>Backend</h4>
+            <div class="skill-group spot reveal">
+              <div class="skill-head">
+                <h4>Backend</h4>
+                <span class="skill-count">06</span>
+              </div>
               <div class="chips">
                 <span class="chip">Node.js</span>
                 <span class="chip">Express</span>
@@ -165,8 +226,11 @@
                 <span class="chip">MySQL</span>
               </div>
             </div>
-            <div class="skill-group">
-              <h4>Cloud &amp; Tools</h4>
+            <div class="skill-group spot reveal">
+              <div class="skill-head">
+                <h4>Cloud &amp; Tools</h4>
+                <span class="skill-count">06</span>
+              </div>
               <div class="chips">
                 <span class="chip">AWS</span>
                 <span class="chip">Google Cloud</span>
@@ -180,107 +244,121 @@
         </div>
       </section>
 
-      <section id="projects" class="section fade-in">
+      <section id="projects" class="section">
         <div class="container">
-          <span class="section-label">Projects</span>
-          <h2>Things I've built</h2>
+          <div class="section-head reveal">
+            <span class="section-label"><b>03</b> Projects</span>
+            <h2>Things <span class="grad-text">I've built</span></h2>
+          </div>
 
           <!-- Featured project -->
-          <article class="card featured-card">
+          <article class="featured-card spot tilt reveal">
             <div class="featured-body">
-              <div class="card-top">
-                <span class="card-tag">Featured · Full Stack</span>
-                <h3>Rivia</h3>
-                <p>
-                  A location-based discovery platform for Dominican Republic businesses and experiences. Built with React 19, Supabase, and Leaflet maps. Includes a consumer app, admin dashboard, and landing page.
-                </p>
-              </div>
+              <span class="card-tag">Featured · Full Stack</span>
+              <h3>Rivia</h3>
+              <p>
+                A location-based discovery platform for Dominican Republic businesses and experiences. Built with React 19, Supabase, and Leaflet maps. Includes a consumer app, admin dashboard, and landing page.
+              </p>
+              <ul class="stack-list" aria-label="Tech stack">
+                <li>React 19</li><li>Supabase</li><li>Leaflet</li><li>Tailwind</li><li>Astro</li>
+              </ul>
               <div class="card-actions">
-                <a class="button small primary" href="https://riviard.com/" target="_blank" rel="noopener">Live Site</a>
-                <a class="button small" href="https://github.com/joseidd" target="_blank" rel="noopener">GitHub</a>
+                <a class="button small primary magnetic" href="https://riviard.com/" target="_blank" rel="noopener">Live Site ↗</a>
+                <a class="button small magnetic" href="https://github.com/joseidd" target="_blank" rel="noopener">GitHub</a>
               </div>
             </div>
-            <div class="featured-badge" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <div class="featured-visual" aria-hidden="true">
+              <div class="map-grid"></div>
+              <span class="pin" style="--x: 30%; --y: 40%"></span>
+              <span class="pin" style="--x: 62%; --y: 28%; --d: 0.4s"></span>
+              <span class="pin" style="--x: 48%; --y: 64%; --d: 0.8s"></span>
+              <span class="pin" style="--x: 76%; --y: 58%; --d: 1.2s"></span>
+              <svg class="globe" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </div>
           </article>
 
+          <div class="filters reveal" role="group" aria-label="Filter projects">
+            <button class="filter active" data-filter="all" aria-pressed="true">All <span>6</span></button>
+            <button class="filter" data-filter="fullstack" aria-pressed="false">Full Stack <span>3</span></button>
+            <button class="filter" data-filter="frontend" aria-pressed="false">Frontend <span>3</span></button>
+          </div>
+
           <div class="grid projects">
-            <article class="card">
+            <article class="card spot tilt reveal" data-category="fullstack">
               <div class="card-top">
-                <span class="card-tag">Full Stack</span>
+                <div class="card-meta"><span class="card-tag">Full Stack</span><span class="card-num">01</span></div>
                 <h3>AI Chat App</h3>
                 <p>
                   A fast AI chat application built with Bun, Groq, and vanilla JavaScript. Supports multi-turn conversations, theme switching, and server-side API key protection.
                 </p>
               </div>
               <div class="card-actions">
-                <a class="button small primary" href="https://my-first-ai-app-production.up.railway.app" target="_blank" rel="noopener">Live</a>
+                <a class="button small primary" href="https://my-first-ai-app-production.up.railway.app" target="_blank" rel="noopener">Live ↗</a>
                 <a class="button small" href="https://github.com/joseidd/my-first-ai-app" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
-            <article class="card">
+            <article class="card spot tilt reveal" data-category="fullstack">
               <div class="card-top">
-                <span class="card-tag">Full Stack</span>
+                <div class="card-meta"><span class="card-tag">Full Stack</span><span class="card-num">02</span></div>
                 <h3>News Explorer</h3>
                 <p>
                   Search and save news articles from around the web by keyword. Integrates a live news API with user authentication and saved article persistence.
                 </p>
               </div>
               <div class="card-actions">
-                <a class="button small primary" href="https://joseidd-news-explorer.netlify.app/" target="_blank" rel="noopener">Live</a>
+                <a class="button small primary" href="https://joseidd-news-explorer.netlify.app/" target="_blank" rel="noopener">Live ↗</a>
                 <a class="button small" href="https://github.com/joseidd/News-Explorer_Project" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
-            <article class="card">
+            <article class="card spot tilt reveal" data-category="fullstack">
               <div class="card-top">
-                <span class="card-tag">Full Stack</span>
+                <div class="card-meta"><span class="card-tag">Full Stack</span><span class="card-num">03</span></div>
                 <h3>What to Wear</h3>
                 <p>
                   A full-stack app that recommends clothing based on your local weather. Built with React, JavaScript, and a live weather API with user profiles and wardrobe management.
                 </p>
               </div>
               <div class="card-actions">
-                <a class="button small primary" href="https://wtwrduran.netlify.app/" target="_blank" rel="noopener">Live</a>
+                <a class="button small primary" href="https://wtwrduran.netlify.app/" target="_blank" rel="noopener">Live ↗</a>
                 <a class="button small" href="https://github.com/joseidd/se_project_express" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
-            <article class="card">
+            <article class="card spot tilt reveal" data-category="frontend">
               <div class="card-top">
-                <span class="card-tag">Frontend</span>
+                <div class="card-meta"><span class="card-tag">Frontend</span><span class="card-num">04</span></div>
                 <h3>Spots</h3>
                 <p>
                   A social media web application for sharing photos and locations. Built with HTML, CSS, and JavaScript from a Figma design brief.
                 </p>
               </div>
               <div class="card-actions">
-                <a class="button small primary" href="https://joseidd.github.io/se_project_spots/" target="_blank" rel="noopener">Live</a>
+                <a class="button small primary" href="https://joseidd.github.io/se_project_spots/" target="_blank" rel="noopener">Live ↗</a>
                 <a class="button small" href="https://github.com/joseidd/se_project_spots" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
-            <article class="card">
+            <article class="card spot tilt reveal" data-category="frontend">
               <div class="card-top">
-                <span class="card-tag">Frontend</span>
+                <div class="card-meta"><span class="card-tag">Frontend</span><span class="card-num">05</span></div>
                 <h3>To-Do App</h3>
                 <p>
                   A clean task manager built with HTML, CSS, and JavaScript. Add, complete, and delete tasks with persistent local storage.
                 </p>
               </div>
               <div class="card-actions">
-                <a class="button small primary" href="https://joseidd.github.io/se_project_todo-app/" target="_blank" rel="noopener">Live</a>
+                <a class="button small primary" href="https://joseidd.github.io/se_project_todo-app/" target="_blank" rel="noopener">Live ↗</a>
                 <a class="button small" href="https://github.com/joseidd/se_project_todo-app" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
-            <article class="card">
+            <article class="card spot tilt reveal" data-category="frontend">
               <div class="card-top">
-                <span class="card-tag">Frontend</span>
+                <div class="card-meta"><span class="card-tag">Frontend</span><span class="card-num">06</span></div>
                 <h3>Coffee Shop</h3>
                 <p>
                   A responsive landing page for Triple Peaks Coffee Shop. Built with semantic HTML and CSS, pixel-perfect from a Figma design brief.
                 </p>
               </div>
               <div class="card-actions">
-                <a class="button small primary" href="https://joseidd.github.io/se_project_coffeeshop/" target="_blank" rel="noopener">Live</a>
+                <a class="button small primary" href="https://joseidd.github.io/se_project_coffeeshop/" target="_blank" rel="noopener">Live ↗</a>
                 <a class="button small" href="https://github.com/joseidd/se_project_coffeeshop" target="_blank" rel="noopener">GitHub</a>
               </div>
             </article>
@@ -288,50 +366,69 @@
         </div>
       </section>
 
-      <section id="contact" class="section alt fade-in">
-        <div class="container contact-container">
-          <span class="section-label">Contact</span>
-          <h2>Let's work together</h2>
-          <p class="section-intro">
-            I'm currently open to new opportunities. Whether you have a project in mind or just want to connect — my inbox is open.
-          </p>
-          <div class="contact-links">
-            <a class="contact-link" href="mailto:joseidd@hotmail.com">
-              <span class="contact-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </span>
-              <div>
-                <span class="contact-link-label">Email</span>
-                <span class="contact-link-value">joseidd@hotmail.com</span>
+      <section id="contact" class="section alt">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-label"><b>04</b> Contact</span>
+            <h2>Let's work <span class="grad-text">together</span></h2>
+            <p class="section-intro">
+              I'm currently open to new opportunities. Whether you have a project in mind or just want to connect — my inbox is open.
+            </p>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-links reveal">
+              <div class="contact-item">
+              <a class="contact-link spot has-copy" href="mailto:joseidd@hotmail.com">
+                <span class="contact-link-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                <div>
+                  <span class="contact-link-label">Email</span>
+                  <span class="contact-link-value">joseidd@hotmail.com</span>
+                </div>
+              </a>
+              <button class="copy-btn" type="button" data-copy="joseidd@hotmail.com" aria-label="Copy email address">Copy</button>
               </div>
-              <span class="contact-link-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </span>
-            </a>
-            <a class="contact-link" href="https://www.linkedin.com/in/joseiduran/" target="_blank" rel="noopener">
-              <span class="contact-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              </span>
-              <div>
-                <span class="contact-link-label">LinkedIn</span>
-                <span class="contact-link-value">Jose Duran</span>
+              <a class="contact-link spot" href="https://www.linkedin.com/in/joseiduran/" target="_blank" rel="noopener">
+                <span class="contact-link-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </span>
+                <div>
+                  <span class="contact-link-label">LinkedIn</span>
+                  <span class="contact-link-value">Jose Duran</span>
+                </div>
+                <span class="contact-link-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </span>
+              </a>
+              <a class="contact-link spot" href="https://github.com/joseidd" target="_blank" rel="noopener">
+                <span class="contact-link-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </span>
+                <div>
+                  <span class="contact-link-label">GitHub</span>
+                  <span class="contact-link-value">joseidd</span>
+                </div>
+                <span class="contact-link-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </span>
+              </a>
+            </div>
+
+            <div class="terminal reveal reveal-delay">
+              <div class="term-bar">
+                <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="term-title">jose@portfolio: ~</span>
               </div>
-              <span class="contact-link-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </span>
-            </a>
-            <a class="contact-link" href="https://github.com/joseidd" target="_blank" rel="noopener">
-              <span class="contact-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              </span>
-              <div>
-                <span class="contact-link-label">GitHub</span>
-                <span class="contact-link-value">Jose Duran</span>
+              <div class="term-body" id="term-output" aria-live="polite">
+                <p class="term-muted">Welcome! This terminal actually works.</p>
+                <p class="term-muted">Type <b>help</b> to see what you can do.</p>
               </div>
-              <span class="contact-link-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </span>
-            </a>
+              <form class="term-input" id="term-form" autocomplete="off">
+                <label for="term-cmd" class="term-prompt">➜ <span>~</span></label>
+                <input id="term-cmd" type="text" spellcheck="false" autocapitalize="off" placeholder="help" aria-label="Terminal command" />
+              </form>
+            </div>
           </div>
         </div>
       </section>
@@ -339,10 +436,26 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© <span id="year"></span> Jose Duran</p>
+        <p>© <span id="year"></span> Jose Duran · Built by hand, no frameworks.</p>
         <a href="#content" class="back-to-top">Back to top ↑</a>
       </div>
     </footer>
+
+    <!-- Command palette -->
+    <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+      <div class="palette-backdrop" data-close></div>
+      <div class="palette-panel">
+        <div class="palette-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="palette-input" type="text" placeholder="Type a command or search…" aria-label="Search commands" autocomplete="off" />
+          <kbd>esc</kbd>
+        </div>
+        <ul class="palette-list" id="palette-list" role="listbox"></ul>
+        <div class="palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span></div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="script.js" defer></script>
   </body>

@@ -4,12 +4,14 @@ Personal portfolio site built with plain HTML, CSS, and JavaScript. No framework
 
 ## Features
 
-- Responsive layout (mobile, tablet, desktop)
+- Interactive particle field in the hero (follows your cursor, click to scatter)
+- Hover-reactive gradient name, text-scramble role cycler, orbiting tech chips
+- Cursor spotlight, 3D tilt cards, magnetic buttons, scroll progress bar
+- Project filters (All / Full Stack / Frontend)
+- Working mini terminal in the Contact section (type `help`)
+- Command palette — `⌘K` / `Ctrl K` or `/` to jump anywhere, `T` toggles theme
 - Light / dark theme with localStorage persistence
-- Scroll-triggered fade-in animations
-- Active nav link highlighting on scroll
-- Project cards with live demo links
-- Contact section with email, LinkedIn, and GitHub
+- Responsive, and respects `prefers-reduced-motion`
 
 ## Structure
 
@@ -23,10 +25,10 @@ Personal portfolio site built with plain HTML, CSS, and JavaScript. No framework
 
 ## Run locally
 
-No install needed — just open `index.html` in a browser, or serve with:
+No install needed. From the project folder run:
 
 ```bash
-bunx serve .
+bun run dev
 ```
 
 Then visit `http://localhost:3000`.
